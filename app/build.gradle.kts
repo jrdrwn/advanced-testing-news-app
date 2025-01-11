@@ -8,6 +8,7 @@ plugins {
 android {
     testOptions {
         unitTests.isReturnDefaultValues = true
+        animationsDisabled = true
     }
     namespace = "com.dicoding.newsapp"
     compileSdk = 34
@@ -57,11 +58,13 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.androidx.viewpager2)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.espresso.idling.resource)
 
     //testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.espresso.contrib) //RecyclerViewActions
 
     //room
     implementation(libs.androidx.room.runtime)
@@ -88,4 +91,13 @@ dependencies {
     //special instrumentation testing
     androidTestImplementation(libs.androidx.core.testing) // InstantTaskExecutorRule
     androidTestImplementation(libs.kotlinx.coroutines.test) //TestDispatcher
+
+    //TestCoroutineDispatcher
+    debugImplementation(libs.androidx.fragment.testing) {
+        exclude("androidx.test", "core")
+    } //launchFragmentInContainer
+
+    //mock web server
+    androidTestImplementation(libs.mockwebserver)
+    androidTestImplementation(libs.okhttp3.okhttp.tls)
 }
