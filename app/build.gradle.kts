@@ -65,6 +65,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.espresso.contrib) //RecyclerViewActions
+    androidTestImplementation(libs.espresso.intents) //IntentsTestRule
 
     //room
     implementation(libs.androidx.room.runtime)
